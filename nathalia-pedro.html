@@ -23,11 +23,11 @@
       --muted:#7A7069;
       --white:#FDFAF6;
     }
-    html{scroll-behavior:smooth}
-    body{font-family:'Lato',sans-serif;background-color:var(--cream);color:var(--charcoal);font-weight:300;line-height:1.7}
+    html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%}
+    body{font-family:'Lato',sans-serif;background-color:var(--white);color:var(--charcoal);font-weight:300;line-height:1.7;overflow-x:hidden;overflow-wrap:break-word}
 
     /* NAV */
-    nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0px 24px;display:flex;justify-content:space-between;align-items:center;min-height:36px;background:rgba(242,237,230,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(196,180,158,0.25)}
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0px 24px;display:flex;justify-content:space-between;align-items:center;min-height:36px;background:rgba(253,250,246,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(196,180,158,0.25)}
     .nav-logo{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--blush-deep);line-height:1;letter-spacing:.02em}
     .nav-links{display:flex;gap:32px;list-style:none}
     .nav-links a{text-decoration:none;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:color .3s}
@@ -42,7 +42,7 @@
     .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
     /* MOBILE MENU */
-    .mobile-menu{position:fixed;inset:0;z-index:190;background:var(--cream);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:0;opacity:0;pointer-events:none;transition:opacity .4s ease}
+    .mobile-menu{position:fixed;inset:0;z-index:190;background:var(--white);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:0;opacity:0;pointer-events:none;transition:opacity .4s ease}
     .mobile-menu.open{opacity:1;pointer-events:all}
     .mobile-menu-inner{display:flex;flex-direction:column;align-items:center;width:72%;border-top:1px solid var(--sand-mid)}
     .mobile-menu a,.mobile-menu button.menu-link{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--charcoal);text-decoration:none;letter-spacing:.02em;transition:color .2s;padding:22px 0;width:100%;text-align:center;border-bottom:1px solid var(--sand-mid);background:none;border-top:none;border-left:none;border-right:none;cursor:pointer}
@@ -51,11 +51,11 @@
     .mobile-menu-tag{font-family:'Lato',sans-serif;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--warm);margin-bottom:28px}
 
     /* HERO */
-    .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding-top:36px;background:var(--cream)}
+    .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding-top:36px;background:var(--white)}
     .hero-image-wrap{position:relative;height:100vh;overflow:hidden}
     .hero-image-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(196,180,158,.12) 0%,rgba(232,197,192,.08) 100%)}
     .hero-image-wrap img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:brightness(.97) saturate(.93)}
-    .hero-image-wrap::before{content:'';position:absolute;bottom:-2px;left:0;right:0;height:120px;background:var(--cream);clip-path:ellipse(60% 100% at 50% 100%);z-index:2}
+    .hero-image-wrap::before{content:'';position:absolute;bottom:-2px;left:0;right:0;height:120px;background:var(--white);clip-path:ellipse(60% 100% at 50% 100%);z-index:2}
     .hero-text{padding:60px 64px 60px 56px}
     .hero-eyebrow{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--warm);margin-bottom:20px}
     .hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,3.5vw,3.4rem);line-height:1.2;color:var(--charcoal);margin-bottom:8px}
@@ -70,14 +70,21 @@
     .hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
 
     /* ABOUT */
-    .about-strip{background:var(--sand);padding:80px 10%;display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:center}
+    .about-strip{position:relative;overflow:hidden;background:rgba(168,189,179,.08);border-top:1px solid rgba(217,206,191,.5);padding:80px 10%;display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:center}
+    .about-strip::before{content:'\201C';position:absolute;top:-30px;left:6%;font-family:'Playfair Display',serif;font-size:13rem;line-height:1;color:rgba(232,197,192,.15);pointer-events:none;z-index:0}
+    .about-strip::after{content:'';position:absolute;top:-140px;right:-100px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(168,189,179,.14) 0%,rgba(168,189,179,0) 70%);pointer-events:none;z-index:0}
     .section-label{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--warm);margin-bottom:18px}
-    .about-quote{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.5vw,2rem);font-style:italic;line-height:1.5;color:var(--charcoal)}
+    .about-strip .section-label{display:flex;align-items:center;gap:10px}
+    .about-strip .section-label::before{content:'';width:20px;height:1px;background:var(--warm)}
+    .about-quote{position:relative;z-index:1;border-left:2px solid var(--blush);padding-left:26px;font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.5vw,2rem);font-style:italic;line-height:1.5;color:var(--charcoal)}
     .about-quote span{display:block;width:40px;height:2px;background:var(--blush);margin-top:28px}
+    .about-body{position:relative;z-index:1}
     .about-body p{color:var(--muted);margin-bottom:16px;font-size:.97rem}
+    .about-tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+    .about-tag{font-size:.78rem;letter-spacing:.04em;color:var(--warm);background:var(--sand);border:1px solid var(--sand-mid);border-radius:50px;padding:8px 18px}
 
     /* PILLARS */
-    .pillars{padding:100px 10%;text-align:center;background:var(--cream)}
+    .pillars{padding:100px 10%;text-align:center;background:var(--white)}
     .pillars-header{max-width:520px;margin:0 auto 64px}
     .pillars-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,2.8vw,2.4rem);color:var(--charcoal);line-height:1.3;margin-top:12px}
     .pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
@@ -100,7 +107,7 @@
     .mod-info p{color:rgba(255,255,255,.45);font-size:.82rem}
 
     /* TESTIMONIAL */
-    .testimonial{padding:100px 10%;text-align:center;background:var(--sand)}
+    .testimonial{padding:100px 10%;text-align:center;background:var(--white);border-top:1px solid rgba(217,206,191,.5);border-bottom:1px solid rgba(217,206,191,.5)}
     .testimonial blockquote{max-width:680px;margin:0 auto}
     .testimonial-text{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2.2vw,1.9rem);font-style:italic;color:var(--charcoal);line-height:1.6;margin-bottom:28px}
     .testimonial-text::before{content:'\201C';color:var(--blush-deep);margin-right:4px}
@@ -108,7 +115,7 @@
     .testimonial-meta{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--warm)}
 
     /* CTA */
-    .cta-section{padding:100px 10%;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;background:var(--cream)}
+    .cta-section{padding:100px 10%;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;background:var(--white)}
     .cta-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,2.8rem);line-height:1.25;color:var(--charcoal)}
     .cta-title em{font-style:italic;color:var(--blush-deep)}
     .cta-desc{color:var(--muted);margin-top:20px;margin-bottom:36px;line-height:1.9}
@@ -123,6 +130,12 @@
 
     /* FOOTER */
     footer{background:var(--charcoal);padding:48px 10%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+
+    /* FLOATING BUTTON */
+    .float-btn{position:fixed;bottom:28px;right:28px;z-index:150;display:flex;align-items:center;justify-content:center;width:60px;height:60px;border-radius:50%;background:var(--warm);box-shadow:0 8px 24px rgba(45,41,38,.25);transition:transform .25s,background .25s}
+    .float-btn:hover{background:#9d8a75;transform:translateY(-3px)}
+    .float-btn svg{width:28px;height:28px;fill:var(--white)}
+    @media(max-width:600px){.float-btn{bottom:20px;right:20px;width:54px;height:54px}.float-btn svg{width:25px;height:25px}}
     .levvel-bar{background:#f7f7f5;padding:16px;text-align:center;font-size:.8rem;color:#aaa;font-family:'Lato',sans-serif;font-weight:300}
     .levvel-bar a{text-decoration:none;color:#5cb85c;font-weight:700}
     .footer-logo{font-family:'Playfair Display',serif;color:var(--white);font-size:1rem}
@@ -139,6 +152,8 @@
       .hero-image-wrap::before{display:none}
       .hero-text{padding:48px 24px}
       .about-strip,.modalities,.cta-section{grid-template-columns:1fr;gap:48px;padding:72px 24px}
+      .hero-text,.about-strip>div,.modalities-text,.mod-cards,.cta-section>div{min-width:0}
+      .whatsapp-btn{white-space:normal;text-align:center;padding:16px 24px}
       .pillars{padding:72px 24px}
       .pillars-grid{grid-template-columns:1fr}
       .testimonial{padding:72px 24px}
@@ -201,6 +216,10 @@
     <p>Sou Nathalia Pedro, psicóloga clínica com registro CRP 07/31393. Trabalho com um olhar acolhedor e humanizado, ajudando pessoas a reconectarem com sua essência e potencial.</p>
     <p>Minha atuação é voltada para a saúde emocional, o fortalecimento do protagonismo pessoal e a construção de uma vida com mais propósito. Porque curar-se vai muito além de resolver problemas — é aprender a se escolher todos os dias.</p>
     <p>Atendo de forma online e presencial, criando um espaço seguro onde você pode ser quem é, sem julgamentos.</p>
+    <div class="about-tags">
+      <span class="about-tag">Atendimento online</span>
+      <span class="about-tag">Atendimento presencial</span>
+    </div>
   </div>
 </section>
 
@@ -267,6 +286,10 @@
 <div class="levvel-bar">
   Desenvolvido pela <a href="https://levvel.com.br" target="_blank"><strong>Levvel</strong></a>
 </div>
+
+<a href="https://wa.me/5551981918421" target="_blank" class="float-btn" aria-label="Conversar no WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
 <script>
   const hamburger = document.getElementById("hamburger");
